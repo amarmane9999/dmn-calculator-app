@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dmn:definitions xmlns:dmn="http://www.omg.org/spec/DMN/20180521/MODEL/" xmlns="https://kiegroup.org/dmn/_05081D7C-2119-4C59-9458-E19C3D5369CD" xmlns:feel="http://www.omg.org/spec/DMN/20180521/FEEL/" xmlns:kie="http://www.drools.org/kie/dmn/1.2" xmlns:dmndi="http://www.omg.org/spec/DMN/20180521/DMNDI/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="_2650265A-41B3-4EC5-BEAA-42F749B1E68E" name="Calculator" typeLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" namespace="https://kiegroup.org/dmn/_05081D7C-2119-4C59-9458-E19C3D5369CD">
+  <dmn:extensionElements/>
+  <dmn:itemDefinition id="_B07A57DB-AF64-475B-A2C4-54F352C42A7D" name="operation" isCollection="false">
+    <dmn:typeRef>string</dmn:typeRef>
+    <dmn:allowedValues kie:constraintType="enumeration" id="_712A79ED-DF35-44AB-8C05-74ADBCAC42A9">
+      <dmn:text>"Add", "Subtract", "Multiply", "Divide"</dmn:text>
+    </dmn:allowedValues>
+  </dmn:itemDefinition>
+  <dmn:inputData id="_DF84894F-01FC-435C-85AE-56ED78D0391A" name="operation">
+    <dmn:extensionElements/>
+    <dmn:variable id="_1C842CE2-FC56-4DBC-BEAC-882D8C20E6E0" name="operation" typeRef="operation"/>
+  </dmn:inputData>
+  <dmn:decision id="_26E678B9-E723-4364-848C-FD916124F628" name="calculation">
+    <dmn:extensionElements/>
+    <dmn:variable id="_FB675C40-50CA-4ED8-8FF3-FA0EC466FF88" name="calculation" typeRef="number"/>
+    <dmn:informationRequirement id="_AFB1ACE4-7CD4-4449-AB81-966B0595614A">
+      <dmn:requiredInput href="#_BBFC642E-B4D5-4F77-9372-269A8E97F0BB"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_FCC403A7-2E75-4ACD-AD93-7AA99D0C6E91">
+      <dmn:requiredInput href="#_DF84894F-01FC-435C-85AE-56ED78D0391A"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_E845261C-7B2C-43A0-9E6B-ADF441742DA9">
+      <dmn:requiredInput href="#_26AE89F3-F930-4B02-B864-F74375F00108"/>
+    </dmn:informationRequirement>
+    <dmn:decisionTable id="_7C76756D-1301-42A5-90D8-1695F86C4816" hitPolicy="ANY" preferredOrientation="Rule-as-Row">
+      <dmn:input id="_6B90A642-1DF5-4966-A96D-1549CB28BFBA">
+        <dmn:inputExpression id="_6E16D6E1-8E51-4955-A2E8-86F851B21D4A" typeRef="operation">
+          <dmn:text>operation</dmn:text>
+        </dmn:inputExpression>
+        <dmn:inputValues kie:constraintType="enumeration" id="_7AE59D28-2CF4-4CCF-815D-97A062515CBB">
+          <dmn:text>"Add", "Subtract", "Multiply", "Divide"</dmn:text>
+        </dmn:inputValues>
+      </dmn:input>
+      <dmn:input id="_81F3AC84-20D4-402D-8C1C-7E79AD94A276">
+        <dmn:inputExpression id="_11C7EB3C-430A-44BF-AD7D-AB0F5F5C8BA5" typeRef="number">
+          <dmn:text>value1</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_44B0EE57-3A1F-4BC7-BCF5-45A38753A9B5">
+        <dmn:inputExpression id="_633EB3FE-FF7D-4321-B28E-BE092977395C" typeRef="number">
+          <dmn:text>value2</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:output id="_5458B173-4682-4EF5-99D9-CEAC5FC24A2F"/>
+      <dmn:annotation name="annotation-1"/>
+      <dmn:rule id="_F52512BE-94C7-43D6-A77F-19A6AB62CAFF">
+        <dmn:inputEntry id="_1983A500-1854-4EEB-A187-78DDF3E4D8B8">
+          <dmn:text>"Add"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_8B47DB7D-7B13-4C6F-BCE1-2D50993B1DA6">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_70526BA7-C71C-4E3B-82D2-79B60CAC91C8">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_927D4B63-3CCA-4380-B7E5-CF4BC592EB8C">
+          <dmn:text>value1 + value2</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_44B86B9E-E447-49E4-BD99-6ED1B96A828B">
+        <dmn:inputEntry id="_CF0C33A7-24A2-4A4C-ABCD-F5D2F5C18714">
+          <dmn:text>"Subtract"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_CECCBDB9-0D0A-4892-966C-06A09D15CDB5">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_93C7E205-BEDD-4084-AD51-B09819DAF0E5">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_FD89E821-2DB8-43EC-B37D-5078A23E0D30">
+          <dmn:text>value1 - value2</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_2CE5BC07-131B-4268-AB73-A28E1ABCD579">
+        <dmn:inputEntry id="_2A9C788F-40E1-4BA6-8893-72FE980A45BE">
+          <dmn:text>"Multiply"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_6D8E25DB-ED3F-4C15-88AC-481F552AFD26">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_61360136-C449-4831-B489-41FCDD0E2509">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_D1933FAE-A955-407A-9586-79AB588B2660">
+          <dmn:text>value1 * value2</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_9C7721E6-AB30-4127-99CE-C865861E83BE">
+        <dmn:inputEntry id="_E91A9EA0-5F15-405D-A49D-84F9D0205DED">
+          <dmn:text>"Divide"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_865E323B-F55D-4CA9-A257-F4030D9B9B57">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_001C026C-3CE5-4CA4-891A-630EEA7610D6">
+          <dmn:text>&gt;0</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_BDF7E488-1AA3-4730-8553-0DFFA40889E0">
+          <dmn:text>value1 / value2</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_263F52A5-6276-4D61-8A44-9AC26A69B859">
+        <dmn:inputEntry id="_3A03E851-88C0-46FD-B7F5-F3B6A815551A">
+          <dmn:text>"Divide"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_1ADB3157-8600-40C2-AA5C-EF6E401B10CB">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_90A8E526-6D56-49D4-956E-20D968278FF7">
+          <dmn:text>&lt;1</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_53B01A84-2A1C-46CA-8129-07CD03ACB3DC">
+          <dmn:text>"Devide by 0 is not allowed."</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+    </dmn:decisionTable>
+  </dmn:decision>
+  <dmn:inputData id="_26AE89F3-F930-4B02-B864-F74375F00108" name="value1">
+    <dmn:extensionElements/>
+    <dmn:variable id="_3C3301D6-0212-4F81-80F9-6BD5D394D84A" name="value1" typeRef="number"/>
+  </dmn:inputData>
+  <dmn:inputData id="_BBFC642E-B4D5-4F77-9372-269A8E97F0BB" name="value2">
+    <dmn:extensionElements/>
+    <dmn:variable id="_63BCB35E-8478-499D-B0B7-450947C00204" name="value2" typeRef="number"/>
+  </dmn:inputData>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram id="_0AA26A17-BCF4-4C46-8986-4ACE5B0F49F3" name="DRG">
+      <di:extension>
+        <kie:ComponentsWidthsExtension>
+          <kie:ComponentWidths dmnElementRef="_7C76756D-1301-42A5-90D8-1695F86C4816">
+            <kie:width>50</kie:width>
+            <kie:width>140</kie:width>
+            <kie:width>100</kie:width>
+            <kie:width>100</kie:width>
+            <kie:width>246</kie:width>
+            <kie:width>100</kie:width>
+          </kie:ComponentWidths>
+        </kie:ComponentsWidthsExtension>
+      </di:extension>
+      <dmndi:DMNShape id="dmnshape-drg-_DF84894F-01FC-435C-85AE-56ED78D0391A" dmnElementRef="_DF84894F-01FC-435C-85AE-56ED78D0391A" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="791" y="284" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-drg-_26E678B9-E723-4364-848C-FD916124F628" dmnElementRef="_26E678B9-E723-4364-848C-FD916124F628" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="551" y="127" width="318" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-drg-_26AE89F3-F930-4B02-B864-F74375F00108" dmnElementRef="_26AE89F3-F930-4B02-B864-F74375F00108" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="527.5981308411215" y="284" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-drg-_BBFC642E-B4D5-4F77-9372-269A8E97F0BB" dmnElementRef="_BBFC642E-B4D5-4F77-9372-269A8E97F0BB" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="659.2990654205607" y="284" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="dmnedge-drg-_AFB1ACE4-7CD4-4449-AB81-966B0595614A" dmnElementRef="_AFB1ACE4-7CD4-4449-AB81-966B0595614A">
+        <di:waypoint x="709.2990654205607" y="309"/>
+        <di:waypoint x="710" y="152"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-drg-_FCC403A7-2E75-4ACD-AD93-7AA99D0C6E91" dmnElementRef="_FCC403A7-2E75-4ACD-AD93-7AA99D0C6E91">
+        <di:waypoint x="841" y="309"/>
+        <di:waypoint x="710" y="152"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-drg-_E845261C-7B2C-43A0-9E6B-ADF441742DA9" dmnElementRef="_E845261C-7B2C-43A0-9E6B-ADF441742DA9">
+        <di:waypoint x="577.5981308411215" y="309"/>
+        <di:waypoint x="710" y="152"/>
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</dmn:definitions>
